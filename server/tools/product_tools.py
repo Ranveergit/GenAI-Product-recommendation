@@ -101,6 +101,20 @@ def preety_print_product_metadata_response(
                 cleaned_json = cleaned_json.replace('\\"', '"')
                 cleaned_json = cleaned_json.replace('\\\\', '\\')
                 data = json.loads(cleaned_json)
+
+
+            
+
+#             # Type 1: a raw JSON string
+# '{"id": 1, "price": 999, ...}'
+
+# # Type 2: a list of ProductResponse objects  
+# [ProductResponse(...), ProductResponse(...)]
+
+# # Type 3: a list of JSON strings
+# ['{"id": 1, ...}', '{"id": 2, ...}']
+
+            
                 
             if isinstance(data, list):
                 responses.extend([ProductResponse(**item) for item in data])
