@@ -21,8 +21,11 @@ class IngestionService:
     def __init__(self):
         """Initialize ingestion service"""
         self.documents_dir = settings.DOCUMENTS_DIR
-        self.cache_file = settings.ROOT_DIR / "milvus_cache" / "ingestion_cache.json"
-        self.cache_file.parent.mkdir(exist_ok=True)
+        self.cache_file = settings.ROOT_DIR / "milvus_cache" / "ingestion_cache.json"  # path to milvus_cache/ingestion_cache.json — a file that remembers which products are already ingested
+        self.cache_file.parent.mkdir(exist_ok=True) # create milvus cache if it does not exist 
+
+
+    # MD5 is a function that takes ANY content → produces a fixed 32-character fingerprint string.
         
     def _load_cache(self) -> Dict[str, str]:
         """Load ingestion cache"""
